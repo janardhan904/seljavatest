@@ -3,20 +3,24 @@ package org.example.stepdef;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.hooksetup.Hooksetup;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.example.config.Loggers;
+import org.example.hooksetup.HookSetup;
 import org.example.pages.appages.APHomePage;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 
-public class Teststepdef{
-    WebDriver driver = Hooksetup.getDriver();
+public class TestStepDef{
+    WebDriver driver = HookSetup.getDriver();
     APHomePage aphomepage = new APHomePage(driver);
+    private static final Logger log = LogManager.getLogger(TestStepDef.class);
 
     @Given("user is  on homepage")
     public void user_is_on_homepage() throws IOException {
+        log.info("Navigating to URL");
         aphomepage.navigateURL("http://automationpractice.com/index.php");
     }
 

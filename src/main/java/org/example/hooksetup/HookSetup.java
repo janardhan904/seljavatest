@@ -4,11 +4,11 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeStep;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.FileInputStream;
@@ -17,11 +17,12 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class Hooksetup {
+public class HookSetup {
     public static WebDriver driver;
     public static Properties prop;
+    private static final Logger log = LogManager.getLogger(HookSetup.class);
 
-    public Hooksetup()  {
+    public HookSetup()  {
         prop = new Properties();
         FileInputStream ip = null;
         try {
@@ -44,18 +45,16 @@ public class Hooksetup {
         return new WebDriverWait(driver, timeoutSeconds);
     }
 
-    //Before hooks run before the first step of each scenario.
-    @Before
-    public WebDriver browserSetup() {
-        System.out.println("++++++Before hooks+++++++");
+    public WebDriver browserSetup(String browser) {
+        log.info("++++++Before hooks+++++++");
 
         String browserName = prop.getProperty("browser");
         String projectPath = System.getProperty("user.dir");
-        if(browserName.equals("chrome")){
+        if(browserName.equalsIgnoreCase(browser)){
             System.setProperty("webdriver.chrome.driver", projectPath + "/drivers/chromedriver.exe");
             driver = new ChromeDriver();
         }
-        else if(browserName.equals("firefox")){
+        else if(browserName.equalsIgnoreCase(browser)){
             System.setProperty("webdriver.gecko.driver", "/drivers/geckodriver");
             driver = new FirefoxDriver();
         }
@@ -67,27 +66,5 @@ public class Hooksetup {
         return driver;
     }
 
-    //Step hooks invoked before and after a step.
-    // If a BeforeStep hook is executed the AfterStep hooks will also be executed regardless of the result of the step.
-    // If a step did not pass, the following step and its hooks will be skipped.
-    @BeforeStep
-    public void beforeStep() {
-        System.out.println("++++++Before Step+++++++");
 
-    }
-
-    @AfterStep
-    public void afterStep() {
-        System.out.println("++++++After Step++++++++");
-
-    }
-
-    @After
-    public void tearDown() {
-        System.out.println("++++++After Hook++++++++");
-
-        driver.close();
-        driver.quit();
-
-    }
 }
