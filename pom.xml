@@ -26,14 +26,6 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-jvm -->
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-jvm</artifactId>
-      <version>6.9.1</version>
-      <type>pom</type>
-    </dependency>
-
 
     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
     <dependency>
@@ -47,6 +39,14 @@
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
+      <version>6.9.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-picocontainer</artifactId>
       <version>6.9.1</version>
       <scope>test</scope>
     </dependency>
