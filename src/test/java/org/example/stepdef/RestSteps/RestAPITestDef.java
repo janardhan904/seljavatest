@@ -9,12 +9,14 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 public class RestAPITestDef {
+    Response response;
+    JSONObject request;
 
     //GET REQUEST
     @Test
     public void GetRequest() {
 
-        Response response = RestAssured.get("https://reqres.in/api/users?page=2");
+        response = RestAssured.get("https://reqres.in/api/users?page=2");
         System.out.println(response.statusCode());
         System.out.println(response.asString());
         System.out.println(response.getBody().asString());
@@ -40,12 +42,11 @@ public class RestAPITestDef {
 
     @Test
     public void PostRequest() {
-        JSONObject request = new JSONObject();
+        request = new JSONObject();
         request.put("name", "JD");
-        request.put("job", "TESTQA");
+        request.put("job", "TEST");
 
         System.out.println(request);
-        System.out.println(request.toString());
 
         given().
                 body(request.toJSONString()).
@@ -56,12 +57,11 @@ public class RestAPITestDef {
 
     @Test
     public void PutRequestUpdate() {
-        JSONObject request = new JSONObject();
+        request = new JSONObject();
         request.put("name", "JD");
-        request.put("job", "TESTQA");
+        request.put("job", "TEST");
 
         System.out.println(request);
-        System.out.println(request.toString());
 
         given().
                 body(request.toJSONString()).
@@ -72,12 +72,11 @@ public class RestAPITestDef {
 
     @Test
     public void PatchRequest() {
-        JSONObject request = new JSONObject();
+        request = new JSONObject();
         request.put("name", "JD");
-        request.put("job", "TESTQA");
+        request.put("job", "TEST");
 
         System.out.println(request);
-        System.out.println(request.toString());
 
         given().
                 body(request.toJSONString()).
@@ -88,7 +87,7 @@ public class RestAPITestDef {
 
     @Test
     public void DeleteRequest() {
-        JSONObject request = new JSONObject();
+        request = new JSONObject();
         given().
                 body(request.toJSONString()).
                 when().
