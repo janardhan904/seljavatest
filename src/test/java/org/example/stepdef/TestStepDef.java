@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.example.config.Loggers;
 import org.example.hooksetup.HookSetup;
 import org.example.pages.appages.APHomePage;
+import org.example.utils.ExcelUtils;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
@@ -18,10 +19,18 @@ public class TestStepDef{
     APHomePage aphomepage = new APHomePage(driver);
     private static final Logger log = LogManager.getLogger(TestStepDef.class);
 
+    String fileName = "/Files/SampleData.xlsx";
+    String sheetName="Sheet1";
+
     @Given("user is  on homepage")
     public void user_is_on_homepage() throws IOException {
         log.info("Navigating to URL");
         aphomepage.navigateURL("http://automationpractice.com/index.php");
+
+        String userDirectory = System.getProperty("user.dir");
+        System.out.println(userDirectory);
+        log.info(ExcelUtils.getCellData(userDirectory+fileName,sheetName,1,1));
+
     }
 
     @When("user navigates to Login Page")
@@ -30,15 +39,15 @@ public class TestStepDef{
     }
 
     @When("user enters username and Password")
-    public void user_enters_username_and_password() {
+    public void user_enters_username_and_password() throws IOException {
         aphomepage.enterUsername("janardhan.reddy75@gmail.com");
         aphomepage.enterpwd("janardhan@123");
         aphomepage.clickLoginButton();
+
     }
 
     @Then("success message is displayed")
     public void success_message_is_displayed() {
         //Assert.assertEquals("My account - My Store", driver.getTitle());
-        driver.quit();
     }
 }
