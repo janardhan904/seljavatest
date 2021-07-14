@@ -4,10 +4,14 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeStep;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.example.enums.Browsers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -45,20 +49,28 @@ public class HookSetup {
         return new WebDriverWait(driver, timeoutSeconds);
     }
 
-    public WebDriver browserSetup(String browser) {
+    public WebDriver browserSetup() throws Exception {
         log.info("++++++Before hooks+++++++");
 
         String browserName = prop.getProperty("browser");
-        String projectPath = System.getProperty("user.dir");
-        if(browserName.equalsIgnoreCase(browser)){
-            System.setProperty("webdriver.chrome.driver", projectPath + "/drivers/chromedriver.exe");
-            driver = new ChromeDriver();
+
+        if(browserName.equalsIgnoreCase(Browsers.CHROME.name())){
+            ChromeOptions chromeOptions = new ChromeOptions();
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver(chromeOptions);
         }
-        else if(browserName.equalsIgnoreCase(browser)){
-            System.setProperty("webdriver.gecko.driver", "/drivers/geckodriver");
+        else if(browserName.equalsIgnoreCase(Browsers.FIREFOX.name())){
+            WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
         }
-
+        else if(browserName.equalsIgnoreCase(Browsers.EDGE.name())){
+            WebDriverManager.edgedriver().setup();
+            driver = new EdgeDriver();
+        }
+        else{
+            //If no browser passed throw exception
+            throw new Exception("Browser is not correct");
+        }
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();

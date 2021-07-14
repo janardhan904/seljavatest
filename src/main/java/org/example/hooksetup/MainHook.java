@@ -15,9 +15,9 @@ public class MainHook {
     private static final Logger log = LogManager.getLogger(MainHook.class);
 
     @Before
-    public void initializeTest() {
+    public void initializeTest() throws Exception {
         hookSetup = new HookSetup();
-        hookSetup.browserSetup(Browsers.CHROME.name());
+        hookSetup.browserSetup();
     }
 
     //Step hooks invoked before and after a step.
@@ -26,7 +26,6 @@ public class MainHook {
     @BeforeStep
     public void beforeStep() {
         log.info("++++++Before Step+++++++");
-
     }
 
     @AfterStep
