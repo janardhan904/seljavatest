@@ -30,7 +30,6 @@ public class TestStepDef{
         String userDirectory = System.getProperty("user.dir");
         System.out.println(userDirectory);
         log.info(ExcelUtils.getCellData(userDirectory+fileName,sheetName,1,1));
-
     }
 
     @When("user navigates to Login Page")

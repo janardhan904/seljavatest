@@ -15,9 +15,26 @@ public class ActionHelpers {
     public ActionHelpers(WebDriver driver){
         this.driver = driver;
     }
+
     public static void JSScrollIntoView(WebElement element){
         log.info("Scroll into the element...");
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("arguments[0].scrollIntoView(true);",element);
     }
+
+    public static String currentURL() throws Exception
+    {
+        return driver.getCurrentUrl();
+    }
+
+    public static String currentPageTitle() throws Exception
+    {
+        return driver.getTitle();
+    }
+
+    protected static String getTextfromElement(WebElement element) throws Exception
+    {
+        return element.getText();
+    }
+
 }

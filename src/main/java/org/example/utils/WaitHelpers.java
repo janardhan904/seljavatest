@@ -2,6 +2,7 @@ package org.example.utils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,4 +22,16 @@ public class WaitHelpers {
         wait.until(ExpectedConditions.visibilityOf(element));
         log.info("element is visible..");
     }
+
+    private static boolean isPageLoadedCompletedJS()
+    {
+        return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("loaded")
+                || ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+    }
+
+    public static void sleepFor(int millis) throws InterruptedException
+    {
+        Thread.sleep(millis);
+    }
+
 }

@@ -1,0 +1,26 @@
+2021-07-15 02:52:49.573 [main] INFO  org.example.hooksetup.HookSetup - ++++++Before hooks+++++++
+2021-07-15 02:52:57.083 [main] INFO  org.example.hooksetup.MainHook - ++++++Before Step+++++++
+2021-07-15 02:52:58.778 [main] INFO  org.example.hooksetup.MainHook - ++++++After Step++++++++
+2021-07-15 02:52:58.778 [main] INFO  org.example.hooksetup.MainHook - ++++++Before Step+++++++
+2021-07-15 02:52:59.580 [main] INFO  org.example.hooksetup.MainHook - ++++++After Step++++++++
+2021-07-15 02:52:59.580 [main] INFO  org.example.hooksetup.MainHook - ++++++Before Step+++++++
+2021-07-15 02:52:59.580 [main] INFO  org.example.hooksetup.MainHook - ++++++After Step++++++++
+2021-07-15 02:52:59.580 [main] INFO  org.example.hooksetup.MainHook - Navigate to UltimateQa HomePage For Data Driven testing For 'https://ultimateqa.com/automation' is pass
+2021-07-15 02:58:26.973 [main] INFO  org.example.hooksetup.HookSetup - ++++++Before hooks+++++++
+2021-07-15 02:58:33.326 [main] INFO  org.example.hooksetup.MainHook - ++++++Before Step+++++++
+2021-07-15 02:58:35.365 [main] INFO  org.example.hooksetup.MainHook - ++++++After Step++++++++
+2021-07-15 02:58:35.365 [main] INFO  org.example.hooksetup.MainHook - ++++++Before Step+++++++
+2021-07-15 02:58:36.365 [main] INFO  org.example.hooksetup.MainHook - ++++++After Step++++++++
+2021-07-15 02:58:36.365 [main] INFO  org.example.hooksetup.MainHook - ++++++Before Step+++++++
+2021-07-15 02:58:36.365 [main] INFO  org.example.hooksetup.MainHook - ++++++After Step++++++++
+2021-07-15 02:58:36.365 [main] INFO  org.example.hooksetup.MainHook - Navigate to UltimateQa HomePage For Data Driven testing For 'https://ultimateqa.com/automation' is Failed
+2021-07-15 03:00:49.985 [main] INFO  org.example.hooksetup.HookSetup - ++++++Before hooks+++++++
+2021-07-15 03:00:56.274 [main] INFO  org.example.hooksetup.MainHook - ++++++Before Step+++++++
+2021-07-15 03:00:58.017 [main] INFO  org.example.hooksetup.MainHook - ++++++After Step++++++++
+2021-07-15 03:00:58.017 [main] INFO  org.example.hooksetup.MainHook - ++++++Before Step+++++++
+2021-07-15 03:00:58.735 [main] INFO  org.example.hooksetup.MainHook - ++++++After Step++++++++
+2021-07-15 03:00:58.735 [main] INFO  org.example.hooksetup.MainHook - ++++++Before Step+++++++
+2021-07-15 03:00:58.835 [main] INFO  org.example.hooksetup.MainHook - ++++++After Step++++++++
+2021-07-15 03:00:58.835 [main] INFO  org.example.hooksetup.MainHook - ++++++Before Step+++++++
+2021-07-15 03:00:58.835 [main] INFO  org.example.hooksetup.MainHook - ++++++After Step++++++++
+2021-07-15 03:00:58.839 [main] INFO  org.example.hooksetup.MainHook - Navigate to UltimateQa HomePage For Data Driven testing For 'https://ultimateqa.com/automation' is pass
