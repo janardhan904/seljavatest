@@ -8,7 +8,10 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/DataDriven.feature"
         ,glue= {"org.example.stepdef", "org.example.hooksetup"}
         ,dryRun = false
-        ,monochrome = true
+        ,monochrome = true  // If the monochrome option is set to false, then the console output is not as readable as it should be
+        ,plugin = { "json:target/cucumber.json", "pretty",
+        "junit:target/Cucumber.xml",
+        "html:target/cucumber-reports" }  //Pretty - This provides more verbose output
 )
 
 public class testrunner {
